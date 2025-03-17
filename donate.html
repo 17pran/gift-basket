@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - The Gift Basket</title>
+    <link rel="stylesheet" href="4styles.css">
+    <script src="4script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Make a Difference</h1>
+        <button id="menu-toggle">☰ Menu</button>
+        <nav id="nav-list">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="ngos.html">NGOs</a>
+            <a href="donate.html">Donate</a>
+        </nav>
+    </header>
+
+    <!-- Donation Form -->
+    <section class="donation-section">
+        <h2>Donate to Help Others</h2>
+        <p>Your donations help provide food, clothing, and financial aid to those in need.</p>
+
+        <form class="donation-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+
+            <select required>
+                <option value="money">Money</option>
+                <option value="clothes">Clothes</option>
+                <option value="food">Food</option>
+            </select>
+
+            <input type="number" placeholder="Amount (if donating money)">
+
+            <textarea placeholder="Leave a message (optional)"></textarea>
+
+            <button type="submit" class="btn">Donate Now</button>
+        </form>
+
+        <div class="back-btn-container">
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 The Gift Basket. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
