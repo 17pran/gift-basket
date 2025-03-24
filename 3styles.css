@@ -45,11 +45,11 @@ nav a:hover {
 /* Main Section */
 main {
     padding: 40px 20px;
-    background-color: #f9f9f9;
+    background-color: white;
 }
 
 .ngos-section {
-    background: white;
+    background: rgb(199, 196, 196);
     padding: 20px;
     border-radius: 10px;
     max-width: 1000px;
@@ -76,7 +76,7 @@ main {
 }
 
 .ngo-card {
-    background-color: #fefefe;
+    background-color: #ffffff;
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 10px;

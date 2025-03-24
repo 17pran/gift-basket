@@ -9,7 +9,11 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
+
 
 /* Header */
 header {
@@ -28,7 +32,7 @@ header {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 #menu-toggle {
@@ -56,101 +60,41 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Welcome Section */
-.welcome {
-    background: linear-gradient(to right, #4CAF50, #2E7D32);
-    color: white;
-    text-align: center;
-    padding: 50px 20px;
-}
-
-.welcome .btn {
-    display: inline-block;
-    margin-top: 20px;
-    background-color: white;
-    color: #2E7D32;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.welcome .btn:hover {
-    background-color: #e0e0e0;
-}
-
-/* Auth Section */
-.auth-section {
+/* Menu Section */
+.menu-section {
     display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 50px 20px;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 50px auto;
+    max-width: 900px;
 }
 
-.auth-container {
+.menu-card {
     background-color: white;
+    width: 80%;
+    max-width: 300px;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-}
-
-.auth-container h2 {
-    margin-bottom: 20px;
     text-align: center;
-}
-
-.auth-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.auth-container input {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.auth-container button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
-.auth-container button:hover {
-    background-color: #388E3C;
+.menu-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    background-color: #f9f9f9;
 }
+
 
 /* Footer */
 footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 15px;
-}
-
-/* Add this to your existing CSS */
-
-html,
-body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    nav {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-    }
+    padding: 25px;
+    margin-top: auto;
 }
