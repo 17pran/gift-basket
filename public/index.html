@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Gift Basket - Login/Register</title>
     <link rel="stylesheet" href="1index-styles.css">
-    <script src="1index-script.js" defer></script> <!-- Separate JS for index -->
+    <script src="1index-script.js" defer></script> <!-- Optional JS -->
 </head>
 
 <body>
@@ -16,6 +16,7 @@
         <h1>The Gift Basket</h1>
     </header>
     <img src="background.jpg" alt="Background" class="background-image">
+
     <!-- Welcome Section -->
     <section class="welcome">
         <h2>Welcome to The Gift Basket</h2>
@@ -24,20 +25,23 @@
 
     <!-- Login/Register Section -->
     <section class="auth-section">
+        <!-- Login Form -->
         <div class="auth-container">
             <h2>Login</h2>
-            <form id="login-form">
-                <input type="email" placeholder="Your Email" required>
-                <input type="password" placeholder="Your Password" required>
+            <form id="login-form" action="/login" method="POST">
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="password" name="password" placeholder="Your Password" required>
                 <button type="submit">Login</button>
             </form>
         </div>
+
+        <!-- Register Form -->
         <div class="auth-container">
             <h2>Register</h2>
-            <form id="register-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <input type="password" placeholder="Your Password" required>
+            <form id="register-form" action="/register" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="password" name="password" placeholder="Your Password" required>
                 <button type="submit">Register</button>
             </form>
         </div>
