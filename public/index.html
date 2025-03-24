@@ -26,25 +26,22 @@
     <!-- Login/Register Section -->
     <section class="auth-section">
         <!-- Login Form -->
-        <div class="auth-container">
+        <form id="login-form" method="POST" action="/login">
             <h2>Login</h2>
-            <form id="login-form" action="/login" method="POST">
-                <input type="email" name="email" placeholder="Your Email" required>
-                <input type="password" name="password" placeholder="Your Password" required>
-                <button type="submit">Login</button>
-            </form>
-        </div>
+            <input type="email" name="email" placeholder="Your Email" required />
+            <input type="password" name="password" placeholder="Your Password" required />
+            <button type="submit">Login</button>
+        </form>
 
         <!-- Register Form -->
-        <div class="auth-container">
+        <form id="register-form" method="POST" action="/register">
             <h2>Register</h2>
-            <form id="register-form" action="/register" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <input type="password" name="password" placeholder="Your Password" required>
-                <button type="submit">Register</button>
-            </form>
-        </div>
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <input type="password" name="password" placeholder="Your Password" required />
+            <button type="submit">Register</button>
+        </form>
+
     </section>
 
     <!-- Footer -->

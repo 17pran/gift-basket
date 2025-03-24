@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    position: relative;
 }
 
 /* Background Image */
@@ -40,12 +41,7 @@ header {
     color: white;
     text-align: center;
     padding: 50px 20px;
-    border-radius: 0;
-    /* Remove rounded edges */
     width: 100%;
-    /* Full width */
-    margin: 0;
-    /* Remove margins */
 }
 
 /* Auth Section */
@@ -57,41 +53,39 @@ header {
     padding: 40px 20px;
 }
 
-.auth-container {
+.auth-section form {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
-}
-
-.auth-container h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.auth-container form {
     display: flex;
     flex-direction: column;
 }
 
-.auth-container input {
+.auth-section form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-section input {
     margin-bottom: 15px;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.auth-container button {
+.auth-section button {
     background-color: #4CAF50;
     color: white;
     border: none;
     padding: 12px;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.auth-container button:hover {
+.auth-section button:hover {
     background-color: #388E3C;
 }
 
