@@ -31,8 +31,52 @@ body {
 header {
     background-color: #333;
     color: white;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    /* Aligns items to the left and right */
+    align-items: center;
+    /* Vertically aligns the content */
     padding: 20px;
+}
+
+/* Header Buttons Container */
+.header-buttons {
+    display: flex;
+    gap: 20px;
+    /* Spacing between the buttons */
+}
+
+/* Common Button Styles */
+button {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Register Button Styling */
+#register-btn {
+    background-color: #7b848e;
+    /* Blue background */
+}
+
+#register-btn:hover {
+    background-color: #0d1115;
+    /* Darker blue when hovered */
+}
+
+/* Settings Button Styling */
+#settings-btn {
+    background-color: #28a745;
+    /* Green background */
+}
+
+#settings-btn:hover {
+    background-color: #218838;
+    /* Darker green when hovered */
 }
 
 /* Welcome Section */
@@ -87,6 +131,25 @@ header {
 
 .auth-section button:hover {
     background-color: #388E3C;
+}
+
+/* Register Button Styling */
+.auth-section .register-btn {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    background-color: #007BFF;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    width: auto;
+    transition: background-color 0.3s ease;
+}
+
+.auth-section .register-btn:hover {
+    background-color: #0056b3;
 }
 
 /* Footer */
