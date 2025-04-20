@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
     <!-- Header -->
     <header>
         <h1>Upcoming Donation Events</h1>
@@ -28,19 +27,19 @@
         <div class="event-card">
             <h2>Food Drive</h2>
             <p>Join us in distributing food to the needy.</p>
-            <a href="#" class="btn">Join Now</a>
+            <a href="#" class="btn open-form" data-form="food-form">Join Now</a>
         </div>
 
         <div class="event-card">
             <h2>Clothing Donation</h2>
             <p>Donate clothes to those in need and spread warmth.</p>
-            <a href="#" class="btn">Donate Clothes</a>
+            <a href="#" class="btn open-form" data-form="clothes-form">Donate Clothes</a>
         </div>
 
         <div class="event-card">
             <h2>Monetary Support</h2>
             <p>Help by making a monetary donation to support NGOs.</p>
-            <a href="#" class="btn">Donate Now</a>
+            <a href="#" class="btn open-form" data-form="money-form">Donate Now</a>
         </div>
 
         <div class="back-btn-container">
@@ -48,6 +47,44 @@
         </div>
     </section>
 
+    <!-- Pop-up Forms -->
+    <div class="form-popup" id="food-form">
+        <div class="form-content">
+            <span class="close-btn">&times;</span>
+            <h3>Join the Food Drive</h3>
+            <form id="food-form-form" action="/events" method="POST">
+                <input type="text" name="ngoId" placeholder="NGO ID" required />
+                <input type="text" name="eventName" placeholder="Event Name" required />
+                <input type="date" name="eventDate" required />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="form-popup" id="clothes-form">
+        <div class="form-content">
+            <span class="close-btn">&times;</span>
+            <h3>Donate Clothes</h3>
+            <form id="clothes-form-form" action="/events" method="POST">
+                <input type="text" name="ngoId" placeholder="NGO ID" required />
+                <input type="text" name="eventName" placeholder="Event Name" required />
+                <input type="date" name="eventDate" required />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="form-popup" id="money-form">
+        <div class="form-content">
+            <span class="close-btn">&times;</span>
+            <h3>Submit a New Event</h3>
+            <form id="money-form-form" action="/events" method="POST">
+                <input type="text" name="ngoId" placeholder="NGO ID" required />
+                <input type="text" name="eventName" placeholder="Event Name" required />
+                <input type="date" name="eventDate" required />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 The Gift Basket. All rights reserved.</p>

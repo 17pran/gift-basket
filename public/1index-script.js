@@ -9,6 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
         registerForm.style.display = 'block';  // Show the register form
     });
 
+    // Optionally, add a "Back to Login" button inside the register form
+    const backToLoginButton = document.createElement("button");
+    backToLoginButton.textContent = "Back to Login";
+    backToLoginButton.addEventListener("click", () => {
+        registerForm.style.display = 'none';  // Hide the register form
+        loginForm.style.display = 'block';  // Show the login form
+    });
+
+    // Add this "Back to Login" button to the register form
+    registerForm.appendChild(backToLoginButton);
+
     // Register Form Handling
     registerForm.addEventListener("submit", (e) => {
         e.preventDefault();

@@ -31,19 +31,19 @@
     <!-- Login/Register Section -->
     <section class="auth-section">
         <!-- Login Form -->
-        <form id="login-form" method="POST" action="/login">
+        <form id="login-form" method="POST" action="/login" autocomplete="off">
             <h2>Login</h2>
-            <input type="email" name="email" placeholder="Your Email" required />
-            <input type="password" name="password" placeholder="Your Password" required />
+            <input type="email" name="email" placeholder="Your Email" required autocomplete="off" />
+            <input type="password" name="password" placeholder="Your Password" required autocomplete="off" />
             <button type="submit">Login</button>
         </form>
 
         <!-- Register Form -->
-        <form id="register-form" method="POST" action="/register" style="display: none;">
+        <form id="register-form" method="POST" action="/register" style="display: none;" autocomplete="off">
             <h2>Register</h2>
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input type="email" name="email" placeholder="Your Email" required />
-            <input type="password" name="password" placeholder="Your Password" required />
+            <input type="text" name="name" placeholder="Your Name" required autocomplete="off" />
+            <input type="email" name="email" placeholder="Your Email" required autocomplete="off" />
+            <input type="password" name="password" placeholder="Your Password" required autocomplete="off" />
             <button type="submit">Register</button>
         </form>
     </section>

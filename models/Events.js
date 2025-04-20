@@ -1,12 +1,18 @@
 const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
-    ngoId: { type: mongoose.Schema.Types.ObjectId, ref: 'NGO', required: true },
-    eventName: { type: String, required: true },
-    eventDate: { type: Date },
-    eventLocation: { type: String },
-    eventDescription: { type: String },
-    createdAt: { type: Date, default: Date.now },
+    title: String,
+    description: String,
+    date: Date,
+    location: String,
+    // Add this if it's missing
+    participants: [
+        {
+            name: String,
+            email: String,
+            message: String
+        }
+    ]
 });
 
 const Events = mongoose.model('Events', eventSchema);

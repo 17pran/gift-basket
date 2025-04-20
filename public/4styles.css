@@ -83,30 +83,21 @@ nav a:hover {
 
 .donation-form input,
 .donation-form select,
-.donation-form textarea {
+.donation-form button {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1rem;
 }
 
-.donation-form textarea {
-    resize: vertical;
-    height: 100px;
-}
-
-.btn {
+.donation-form button {
     background-color: #4CAF50;
     color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
     cursor: pointer;
-    font-size: 1rem;
     transition: background-color 0.3s ease;
 }
 
-.btn:hover {
+.donation-form button:hover {
     background-color: #388E3C;
 }
 

@@ -4,11 +4,12 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
 require('dotenv').config(); // Load environment variables from .env file
 
 // Models
 const Member = require('./models/Member');
-const Donation = require('./models/Donation');
+const Donation = require('./models/Donation'); // Added Donation Model
 const Events = require('./models/Events');
 const NGOs = require('./models/NGOs');
 const Organizers = require('./models/Organizers');
@@ -18,10 +19,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(bodyParser.json()); // Parse JSON bodies
-app.use(express.static('public')); // Serve static frontend files
+app.use(bodyParser.json());
+app.use(cors());
+app.use(express.static('public'));
 
-// Connect to MongoDB (only once)
+// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -29,46 +31,46 @@ mongoose.connect(process.env.MONGO_URI, {
     .then(() => console.log('✅ Connected to MongoDB'))
     .catch((err) => console.error('❌ MongoDB connection error:', err));
 
-// Nodemailer transporter setup
+// Nodemailer setup
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL_USER,   // Your email (from .env)
-        pass: process.env.EMAIL_PASS,   // Your app password (from .env)
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
     },
 });
 
-// REGISTER Route (using MongoDB instead of users.json)
+// Register
 app.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
-    console.log('📥 Register request received:', req.body);
+    console.log('📥 Register request received:', req.body); // Log the incoming data
 
     try {
         // Check if user already exists
         const userExists = await Member.findOne({ email });
         if (userExists) {
+            console.log('❌ User already exists');
             return res.status(400).json({ success: false, message: 'User already exists.' });
         }
 
-        // Hash the password before saving
+        // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Create new user
         const newUser = new Member({ name, email, password: hashedPassword });
-
-        // Save the new user to MongoDB
         await newUser.save();
+        console.log('✅ User registered:', newUser);
 
-        // Debugging: Log the saved user to see if it worked
-        console.log('✅ User registered and saved:', newUser);
-
+        // Send success response
         res.json({ success: true, message: 'Registration successful!' });
     } catch (err) {
-        console.error('❌ Error registering user:', err);
-        res.status(500).send('Error registering user.');
+        console.error('❌ Error during registration:', err);  // Log the error
+        res.status(500).json({ success: false, message: 'Error registering user.' });
     }
 });
 
 
-// LOGIN Route (using MongoDB instead of users.json)
+// Login
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     console.log('🔐 Login attempt for:', email);
@@ -82,7 +84,6 @@ app.post('/login', async (req, res) => {
             });
         }
 
-        // Compare the password with the hashed one in the database
         const isMatch = await bcrypt.compare(password, member.password);
         if (!isMatch) {
             return res.status(400).json({
@@ -91,7 +92,6 @@ app.post('/login', async (req, res) => {
             });
         }
 
-        // Generate JWT token on successful login
         const token = jwt.sign({ memberId: member._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         const loginTime = new Date().toLocaleString();
@@ -103,7 +103,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// Sample route to send email (for verification or notification)
+// Send Email
 app.post('/send-email', (req, res) => {
     const { to, subject, text } = req.body;
 
@@ -122,6 +122,45 @@ app.post('/send-email', (req, res) => {
         console.log('✅ Email sent:', info.response);
         res.json({ success: true, message: 'Email sent successfully!' });
     });
+});
+
+// Add Event
+app.post('/events', async (req, res) => {
+    const { ngoId, eventName, eventDate } = req.body;
+    console.log('📥 Event submission received:', req.body);
+
+    try {
+        const newEvent = new Events({ ngoId, eventName, eventDate });
+        const savedEvent = await newEvent.save();
+        console.log('✅ Event saved:', savedEvent);
+
+        res.json({ success: true, message: 'Event created successfully!', event: savedEvent });
+    } catch (error) {
+        console.error('❌ Error saving event:', error);
+        res.status(500).json({ success: false, message: 'Error saving event to database.' });
+    }
+});
+
+// Add Donation (NEW ROUTE)
+app.post('/donate', async (req, res) => {
+    const { name, donationType, amount } = req.body;
+    console.log('📥 Donation submission received:', req.body);
+
+    try {
+        const newDonation = new Donation({
+            name,
+            donationType,
+            amount
+        });
+
+        const savedDonation = await newDonation.save();
+        console.log('✅ Donation saved:', savedDonation);
+
+        res.json({ success: true, message: 'Donation received and saved!', donation: savedDonation });
+    } catch (error) {
+        console.error('❌ Error saving donation:', error);
+        res.status(500).json({ success: false, message: 'Error saving donation to database.' });
+    }
 });
 
 // Start the server

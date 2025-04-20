@@ -17,18 +17,43 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", () => {
         if (window.innerWidth >= 768) {
             navList.style.display = "flex";
-            navList.style.flexDirection = "row";
+            navList.style.flexDirection = "row"; // Ensure row direction on wider screens
         } else {
             navList.style.display = "none";
         }
     });
 
-    // Donation form handling
     const donationForm = document.querySelector('.donation-form');
-    donationForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you for your generous donation!');
-        donationForm.reset();
+    donationForm.addEventListener('submit', async (e) => {
+        e.preventDefault();  // Prevent form from submitting normally
+
+        // Get form data
+        const formData = new FormData(donationForm);
+        const data = {
+            name: formData.get('name'),
+            donationType: formData.get('donationType'),
+            amount: formData.get('amount')
+        };
+
+        try {
+            const response = await fetch('/donate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                alert('Thank you for your generous donation!');
+                donationForm.reset(); // Reset form fields
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('There was an issue with the donation submission.');
+        }
     });
 
 });
