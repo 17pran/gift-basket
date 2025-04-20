@@ -8,5 +8,5 @@ const ngoSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
 });
 
-const NGO = mongoose.model('NGO', ngoSchema);
-module.exports = NGO;
+const NGOs = mongoose.model('NGOs', ngoSchema);
+module.exports = NGOs;

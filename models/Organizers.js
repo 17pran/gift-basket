@@ -7,5 +7,5 @@ const organizerSchema = new mongoose.Schema({
     organizerPhone: { type: String },
 });
 
-const Organizer = mongoose.model('Organizer', organizerSchema);
-module.exports = Organizer;
+const Organizers = mongoose.model('Organizers', organizerSchema);
+module.exports = Organizers;
